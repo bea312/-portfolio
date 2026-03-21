@@ -1,6 +1,13 @@
 import { useState } from "react";
 import "./App.css";
 import heroImage from "./assets/WhatsApp Image 2024-12-16 at 09.55.32_9c2b3a89.jpg";
+import profilePhoto from "./assets/Mukagasirabo Beatrice _photo.JPG";
+import capture55 from "./assets/Capture 55.PNG";
+import capt1 from "./assets/capt1.PNG";
+import capture from "./assets/Capture.PNG";
+import capture2 from "./assets/Capture2.PNG";
+import capture3 from "./assets/Capture3.PNG";
+import cpt4 from "./assets/cpt4.PNG";
 
 const services = [
   {
@@ -42,12 +49,12 @@ const services = [
 ];
 
 const works = [
-  "./assets/Capture 55.PNG",
-  "./assets/capt1.PNG",
-  "./assets/Capture.PNG",   
-  "./assets/Capture2.PNG",
-  "./assets/Capture3.PNG",
-  "./assets/cpt4.PNG",
+  capture55,
+  capt1,
+  capture,   
+  capture2,
+  capture3,
+  cpt4,
 ];
 
 const skills = [
@@ -109,7 +116,7 @@ function App() {
         <div className="heroBody">
           <img
             className="heroAvatar"
-            src= "./assets/Mukagasirabo Beatrice _photo.JPG"
+            src={profilePhoto}
             alt="Frontend developer portrait"
           />
 
@@ -142,7 +149,7 @@ function App() {
           <div className="aboutGrid">
             <img
               className="aboutImage"
-              src=" ./assets/WhatsApp Image 2024-12-16 at 09.55.32_9c2b3a89.jpg"
+              src={heroImage}
               alt="Frontend developer portrait"
             />
 
