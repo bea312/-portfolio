@@ -198,7 +198,105 @@ function App() {
         <section className="section" id="services">
           <h2 className="sectionTitle">My Services</h2>
 
-         
+          <div className="servicesGrid">
+            {services.map((service) => (
+              <article className="serviceCard" key={service.id}>
+                <span className="serviceNumber">{service.id}</span>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <a href="#contact" className="serviceLink">
+                  Read More →
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section" id="portfolio">
+          <h2 className="sectionTitle">My latest work</h2>
+
+          <div className="workGrid">
+            {works.map((image, index) => (
+              <div className="workCard" key={index}>
+                <img src={image} alt={`Project ${index + 1}`} />
+                <div className="workOverlay">
+                  <h3>Frontend Project</h3>
+                  <p>Responsive and modern UI design</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="centerAction">
+            <a href="#contact" className="outlineBtn">
+              Show More →
+            </a>
+          </div>
+        </section>
+
+        <section className="section contactSection" id="contact">
+          <h2 className="sectionTitle">Get in touch</h2>
+
+          <div className="contactGrid">
+            <div className="contactInfo">
+              <h3 className="gradientText">Let's talk</h3>
+              <p>
+                I&apos;m available to work on frontend projects, landing pages,
+                portfolio websites, and modern user interfaces. If you need a
+                clean and professional website, feel free to contact me anytime.
+              </p>
+
+              <div className="contactList">
+                <span>mukagasirabob@gmail.com</span>
+                <span>+078-178-312</span>
+                <span> Rwanda</span>
+              </div>
+            </div>
+
+            <form className="contactForm">
+              <label>
+                Your name
+                <input type="text" placeholder="Enter your name" />
+              </label>
+
+              <label>
+                Your Email
+                <input type="email" placeholder="Enter your email" />
+              </label>
+
+              <label>
+                Write your message here
+                <textarea rows="7" placeholder="Enter your message"></textarea>
+              </label>
+
+              <button type="submit" className="gradientBtn submitBtn">
+                Submit now
+              </button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer className="footer" id="footer">
+        <div className="footerTop">
+          <div>
+            <a href="#home" className="brand">
+              Bea<span>trice</span>
+            </a>
+            <p className="footerText">
+              I am a frontend developer focused on building responsive, modern,
+              and visually polished websites with strong attention to clean
+              design and user experience.
+            </p>
+          </div>
+
+          <div className="subscribeBox">
+            <input type="email" placeholder="Enter your email" />
+            <button className="gradientBtn" type="button">
+              Subscribe
+            </button>
+          </div>
+        </div>
 
         <div className="footerBottom">
           <p>© 2026 M Beatrice. All rights reserved.</p>
