@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --bg: #171513;
+  --text: #f8f7f4;
+  --muted: #c4c0bb;
+  --line: rgba(255, 255, 255, 0.14);
+  --gradient: linear-gradient(90deg, #b820e6 0%, #da7c25 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background:
+    radial-gradient(circle at top center, rgba(184, 32, 230, 0.1), transparent 28%),
+    var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.section,
+.hero,
+.footer {
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.hero {
+  padding-top: 28px;
+  padding-bottom: 80px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+}
+
+.brand {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.brand span {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  font-size: 1.1rem;
+}
+
+.navLinks a:hover,
+.footerLinks a:hover,
+.serviceLink:hover {
+  opacity: 0.8;
+}
+
+.activeLink {
+  position: relative;
+}
+
+.activeLink::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 34px;
+  height: 10px;
+  transform: translateX(-50%) rotate(-8deg);
+  background: var(--gradient);
+  border-radius: 999px;
+}
+
+.gradientBtn,
+.outlineBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  padding: 0 30px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  transition: 0.25s ease;
+}
+
+.gradientBtn {
+  background: var(--gradient);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.gradientBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.outlineBtn {
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: white;
+  background: transparent;
+}
+
+.outlineBtn:hover {
+  border-color: #da7c25;
+  color: #da7c25;
+}
+
+.menuToggle {
+  display: none;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menuToggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px auto;
+  background: white;
+  border-radius: 999px;
+}
+
+.heroBody,
+.aboutGrid,
+.servicesGrid,
+.workGrid,
+.contactGrid {
+  animation: fadeUp 0.8s ease both;
+}
