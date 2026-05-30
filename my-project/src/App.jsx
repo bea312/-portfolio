@@ -58,14 +58,52 @@ const works = [
 ];
 
 const skills = [
-  { name: "HTML & CSS", value: "92%" },
-  { name: "React JS", value: "65%" },
+  { name: "HTML & CSS", value: "95%" },
+  { name: "React JS", value: "88%" },
   { name: "JavaScript", value: "88%" },
-  { name: "Next JS", value: "60%" },
+  { name: "Next JS", value: "85%" },
 ];
+
+// ✏️ STEP 1: Go to https://web3forms.com
+// STEP 2: Enter mukagasirabob@gmail.com and click "Get Access Key"
+// STEP 3: Check your email and copy the key, then paste it below
+const ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formStatus, setFormStatus] = useState("idle");
+
+  function handleChange(e) {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setFormStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          subject: `New message from ${formData.name} — Portfolio`,
+          from_name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setFormStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  }
 
   return (
     <div className="app">
@@ -260,25 +298,57 @@ function App() {
               </div>
             </div>
 
-            <form className="contactForm">
+            <form className="contactForm" onSubmit={handleSubmit}>
               <label>
                 Your name
-                <input type="text" placeholder="Enter your name" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
               </label>
 
               <label>
                 Your Email
-                <input type="email" placeholder="Enter your email" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
               </label>
 
               <label>
                 Write your message here
-                <textarea rows="7" placeholder="Enter your message"></textarea>
+                <textarea
+                  rows="7"
+                  name="message"
+                  placeholder="Enter your message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
               </label>
 
-              <button type="submit" className="gradientBtn submitBtn">
-                Submit now
+              <button
+                type="submit"
+                className="gradientBtn submitBtn"
+                disabled={formStatus === "sending"}
+              >
+                {formStatus === "sending" ? "Sending…" : "Submit now"}
               </button>
+
+              {formStatus === "success" && (
+                <p className="formSuccess">Message sent! I'll get back to you soon.</p>
+              )}
+              {formStatus === "error" && (
+                <p className="formError">Something went wrong. Please try again.</p>
+              )}
             </form>
           </div>
         </section>
